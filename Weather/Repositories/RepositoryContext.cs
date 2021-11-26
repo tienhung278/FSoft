@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Weather.Models;
 
-namespace Weather.Repository
+namespace Weather.Repositories
 {
     class RepositoryContext
     {

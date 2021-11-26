@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Weather.Contracts;
 
-namespace Weather.Repository
+namespace Weather.Repositories
 {
     abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
