@@ -32,19 +32,42 @@ namespace Weather.Services
             _weatherForecast = _locationRepository.GetLocationInfoByZipCode(param)?.current;
         }
 
-        public bool IsNotRainny()
+        private bool IsRainny()
         {
-            return _weatherForecast.weather_descriptions.Any(t => t.ToLower() == "clear");
+            return _weatherForecast.weather_descriptions.Any(t => t.ToLower().Contains("rain"));
         }
 
-        public bool IsHighUV()
+        private bool IsHighUV()
         {
             return _weatherForecast.uv_index > 3;
         }
 
-        public bool CanUseKite()
+        private bool CanUseKite()
         {
-            return IsNotRainny() && _weatherForecast.wind_speed > 15;
+            return !IsRainny() && _weatherForecast.wind_speed > 15;
+        }
+
+        public string GetAnswer(int option)
+        {
+            string answer = string.Empty;
+
+            switch (option)
+            {
+                case 1:
+                    answer = IsRainny() ? "No" : "Yes";
+                    break;
+                case 2:
+                    answer = IsHighUV() ? "Yes" : "No";
+                    break;
+                case 3:
+                    answer = CanUseKite() ? "Yes" : "No";
+                    break;
+                default:
+                    answer = "Sorry, I cannot understand your question!";
+                    break;
+            }
+
+            return answer;
         }
     }
 }
