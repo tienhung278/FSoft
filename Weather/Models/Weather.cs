@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Weather.Models
 {
-    class Weather
+    class WeatherForecast
     {
         public string[] weather_descriptions { get; set; }
         public int uv_index { get; set; }

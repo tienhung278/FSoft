@@ -8,6 +8,6 @@ namespace Weather.Models
 {
     class LocationInfo
     {
-        public Weather current { get; set; }
+        public WeatherForecast current { get; set; }
     }
 }
